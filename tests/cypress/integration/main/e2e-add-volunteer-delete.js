@@ -132,7 +132,7 @@ describe('Create member', () => {
     cy.get('div[list="away"]')
       .contains('Eddie Mercx')
       .should('exist')
-    cy.visit('useradmin')
+    cy.visit('/useradmin')
     cy.get('h1')
       .contains('Members')
       .should('exist')

@@ -34,7 +34,7 @@ npm run cypress:open
 
 This will open up a Cypress window, which will look like this
 
-!(images/cypress.png "Cypress window screenshot")
+![Cypress window screenshot](images/cypress.png")
 
 Any of these tests can be run by clicking on them, at which stage a Chrome window will open, and step through the test.
 
@@ -48,7 +48,7 @@ npm run cypress:run
 
 This runs quicker than using the browser, and sends output to the terminal, which looks like this:
 
-!(images/headless.png "Cypress run screenshot")
+![Cypress run screenshot](images/headless.png")
 
 ## Project folder structure
 

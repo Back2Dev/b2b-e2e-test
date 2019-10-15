@@ -1,5 +1,4 @@
 {
-  "projectId": "81ebdm",
   "baseUrl": "https://staging.back2bikes.com.au",
   "integrationFolder": "tests/cypress/integration/main",
   "fixturesFolder": "tests/cypress/fixtures",

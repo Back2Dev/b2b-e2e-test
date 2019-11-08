@@ -1,3 +1,12 @@
+Cypress.on(
+  'uncaught:exception',
+  (err, runnable) =>
+    // returning false here prevents Cypress from
+    // failing the test. We do this because of some ugly js errors
+    // from a js library we are using
+    false
+)
+
 describe('Small Service Test', function() {
   it('Open-Assesment Wepage', () => {
     cy.visit('/assessment')
@@ -11,8 +20,9 @@ describe('Small Service Test', function() {
     // cy.get('input.search').type('Hermino Blick') //types in the name Stephen
     //.contains('this field must have a An Assessor Name')
 
-    // cy.get('#root_assessor')
-    // .type('Shimano')
+    cy.get('input#root_assessor')
+      .click()
+      .type('Pat Caramello')
 
     cy.get('input#root_bikeModel')
       .clear()

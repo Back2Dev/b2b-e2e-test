@@ -1,10 +1,10 @@
 describe('Small Service Test', function() {
   it('Open-Assesment Wepage', () => {
-    cy.visit('http://localhost:3030/assessment')
+    cy.visit('/assessment')
   })
 
   it('clicks service page "type"', function() {
-    cy.get('#minorxServicesCost').click()
+    cy.get('#minor-service').click()
     //.dblclick()
   })
   it('enters data on page, "type"', function() {
@@ -14,7 +14,9 @@ describe('Small Service Test', function() {
     // cy.get('#root_assessor')
     // .type('Shimano')
 
-    cy.get('#root_bikeModel').type('VeryFast')
+    cy.get('input#root_bikeModel')
+      .clear()
+      .type('Very Fast')
 
     cy.get('#root_bikeColor').type('Red')
 

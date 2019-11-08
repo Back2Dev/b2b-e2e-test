@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://staging.back2bikes.com.au",
+  "baseUrl": "http://localhost:3030",
   "integrationFolder": "tests/cypress/integration/main",
   "fixturesFolder": "tests/cypress/fixtures",
   "pluginsFile": "tests/cypress/plugins/index.js",

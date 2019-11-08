@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/Back2bikes/b2b-e2e-test#readme",
   "devDependencies": {
-    "cypress": "^3.4.1",
+    "cypress": "^3.6.0",
     "faker": "^4.1.0"
   }
 }

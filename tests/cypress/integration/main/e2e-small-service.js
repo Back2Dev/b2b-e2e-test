@@ -8,19 +8,17 @@ Cypress.on(
 )
 
 describe('Small Service Test', function() {
-  it('Open-Assesment Wepage', () => {
+  it('retrieves the url and goes to Assessment Webpage', () => {
+    // goes to the Assessment Webpage
     cy.visit('/assessment')
   })
 
-  it('clicks service page "type"', function() {
+  it('Opens the minor service web form.', function() {
     cy.get('#minor-service').click()
     //.dblclick()
   })
-  it('enters data on page, "type"', function() {
-    // cy.get('input.search').type('Hermino Blick') //types in the name Stephen
-    //.contains('this field must have a An Assessor Name')
-
-    cy.get('input#root_assessor')
+  it('Assessor name and details of customers bike.', function() {
+    cy.get('input.search')
       .click()
       .type('Pat Caramello')
     cy.get('#root_bikeMake')
@@ -46,15 +44,17 @@ describe('Small Service Test', function() {
     cy.get('#root_services_7').check()
     cy.get('#root_services_9').check()
   })
-  it('clicks the next button, "type"', function() {
+  it('clicks the button, checks the data and retrieves the next page if there are no problems with the data. "type"', function() {
+    // .should('exsist')
+
     cy.get('button')
       .contains('Next')
       .click()
   })
-  it('Select parts and add further work, "type"', function() {
-    cy.get('#root_parts_9').check() // checks the rear brake cable option.
+  it('Selects extra parts to complete service and gets from the Assessor about extra parts cost of the extra parts. Adds comments about if a bike needs more time to repair.', function() {
+    //cy.get('#root_parts_9').check() // checks the rear brake cable option.
     cy.get('#root_parts_5').check() // checks the V brake pad option.
-    cy.get('#root_parts_13').check()
+    cy.get('#root_parts_13').check() //
 
     cy.get('#root_comments')
       .clear()
@@ -71,24 +71,37 @@ describe('Small Service Test', function() {
 
     cy.get('#root_discountReason').type('late with delivery')
   })
-
-  it('Click buttton to go to next page, "type"', function() {
+  it('gets the button checks whether it has the property next and goes to the next webpage, "type"', function() {
     cy.get('button')
       .contains('Next')
       .click()
   })
 
-  it('Click buttton to go to next page, "type"', function() {
+  it('checks whether the data is correct and storedd in the webpage., ', function() {
+    cy.get('div:has(li)').contains('Shimano')
+    cy.get('div:has(li)').contains('Very Fast')
+  })
+  it('gets the button checks whether it has the property next and goes to the next webpage, "type"', function() {
     cy.get('button')
       .contains('Next')
       .click()
   })
 
-  it('Enters customer data in the form, "type"', function() {
+  it('Input customer data, deterime whether the bike problem is urgent or refurb,', function() {
     cy.get('#root_pickUpDate').type('2019-11-12')
 
-    cy.get('ui input')
-      .contains('Name')
-      .type('Patrick Carmel')
+    cy.get('#root_name').type('Roger dodson')
+
+    cy.get('#root_email').type('R.dodson@bogus.arrival')
+
+    cy.get('#root_phone').type('0461 9990 1043')
+  })
+
+  //gets the button checks whether it has the property next and goes to the next webpage
+  it('Checks whether button loads the customer information web form., ', function() {
+    // cy.get('.li')
+    cy.get('button')
+      .contains('Submit')
+      .click()
   })
 })

@@ -67,9 +67,9 @@ describe('Small Service Test', function() {
 
     cy.get('#root_discount')
       .clear()
-      .type('10')
+      .type('0')
 
-    cy.get('#root_discountReason').type('late with delivery')
+    cy.get('#root_discountReason').type('No discount')
   })
   it('gets the button checks whether it has the property next and goes to the next webpage, "type"', function() {
     cy.get('button')
@@ -78,8 +78,30 @@ describe('Small Service Test', function() {
   })
 
   it('checks whether the data is correct and storedd in the webpage., ', function() {
+    // checks the specifications of the bike.
     cy.get('div:has(li)').contains('Shimano')
     cy.get('div:has(li)').contains('Very Fast')
+    cy.get('div:has(li)').contains('Red')
+    cy.get('div:has(li)').contains('200')
+
+    // checks what the bike needs fixed.
+    cy.get('div:has(li)').contains('Check tyre pressure')
+    cy.get('div:has(li)').contains('Lube derailleurs')
+    cy.get('div:has(li)').contains('Check/tighten bolts on cranks, headset, wheels and bottom bracket')
+    cy.get('div:has(li)').contains('Check wheels are true')
+    cy.get('div:has(li)').contains('Clean and re-grease headset')
+    // checks if the correct parts are displayed on the confirmation web page.
+    cy.get('div:has(li)').contains('Brake pads - V brakes ($10)')
+    cy.get('div:has(li)').contains('Cable fitting x 2 ($30)')
+    cy.get('div:has(li)').contains('Had to wait for more parts to come in.')
+    cy.get('ul:has(li)').contains('50')
+    cy.get('div:has(li)').contains('No discount')
+    // checks if the service is the one selected
+    cy.get('div:has(li)').contains('Minor Service')
+    // Total Price
+    cy.get('div:last-child').contains('Less Discount')
+    cy.get('div:nth-child(3)').contains('Additional Fee')
+    cy.get('div:nth-child(2)').contains('Total Parts Cost')
   })
   it('gets the button checks whether it has the property next and goes to the next webpage, "type"', function() {
     cy.get('button')

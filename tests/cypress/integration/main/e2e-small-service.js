@@ -12,11 +12,14 @@ describe('Small Service Test', function() {
     // goes to the Assessment Webpage
     cy.visit('/assessment')
   })
+  it('checks if whether the correct page has loaded.', function() {
+    cy.get('div:has(h2)').contains('Select Base Assessment')
+  })
 
   it('Opens the minor service web form.', function() {
     cy.get('#minor-service').click()
-    //.dblclick()
   })
+
   it('Assessor name and details of customers bike.', function() {
     cy.get('input.search')
       .click()
@@ -43,14 +46,20 @@ describe('Small Service Test', function() {
 
     cy.get('#root_services_7').check()
     cy.get('#root_services_9').check()
-  })
-  it('clicks the button, checks the data and retrieves the next page if there are no problems with the data. "type"', function() {
-    // .should('exsist')
+
+    // gets the button and determines whether it exists
 
     cy.get('button')
       .contains('Next')
+      .should('exist')
+      .should('be.enabled')
       .click()
   })
+
+  it('checks if whether the correct page has loaded and whether button loaded the correct webpage.', function() {
+    cy.get('div:has(h2)').contains('Total Price')
+  })
+
   it('Selects extra parts to complete service and gets from the Assessor about extra parts cost of the extra parts. Adds comments about if a bike needs more time to repair.', function() {
     //cy.get('#root_parts_9').check() // checks the rear brake cable option.
     cy.get('#root_parts_5').check() // checks the V brake pad option.
@@ -70,14 +79,19 @@ describe('Small Service Test', function() {
       .type('0')
 
     cy.get('#root_discountReason').type('No discount')
-  })
-  it('gets the button checks whether it has the property next and goes to the next webpage, "type"', function() {
+
     cy.get('button')
       .contains('Next')
+      .should('exist')
+      .should('be.enabled')
       .click()
   })
 
-  it('checks whether the data is correct and storedd in the webpage., ', function() {
+  it('checks if whether the correct page has loaded and whether button loaded the correct webpage.', function() {
+    cy.get('div:has(h1)').contains('Review your details')
+  })
+
+  it('checks whether if correct data is stored in the webpage.', function() {
     // checks the specifications of the bike.
     cy.get('div:has(li)').contains('Shimano')
     cy.get('div:has(li)').contains('Very Fast')
@@ -99,17 +113,24 @@ describe('Small Service Test', function() {
     // checks if the service is the one selected
     cy.get('div:has(li)').contains('Minor Service')
     // Total Price
-    cy.get('div:last-child').contains('Less Discount')
-    cy.get('div:nth-child(3)').contains('Additional Fee')
-    cy.get('div:nth-child(2)').contains('Total Parts Cost')
-  })
-  it('gets the button checks whether it has the property next and goes to the next webpage, "type"', function() {
+    cy.get('div:last-child').contains('Less Discount: $0')
+    cy.get('div:nth-child(3)').contains('Additional Fee: $50')
+    cy.get('div:nth-child(2)').contains('Total Parts Cost: $40')
+    cy.get('div:even').contains('Total Price = $134')
+
+    // hits next button to Customer details page and check if button exists
     cy.get('button')
       .contains('Next')
+      .should('exist')
+      .should('be.enabled')
       .click()
   })
 
-  it('Input customer data, deterime whether the bike problem is urgent or refurb,', function() {
+  it('Loads the Customer Details webpage.', function() {
+    cy.get('#root__title').contains('Enter Customer Details')
+  })
+
+  it('Input customer data', function() {
     cy.get('#root_pickUpDate').type('2019-11-12')
 
     cy.get('#root_name').type('Roger dodson')
@@ -117,13 +138,12 @@ describe('Small Service Test', function() {
     cy.get('#root_email').type('R.dodson@bogus.arrival')
 
     cy.get('#root_phone').type('0461 9990 1043')
-  })
 
-  //gets the button checks whether it has the property next and goes to the next webpage
-  it('Checks whether button loads the customer information web form., ', function() {
-    // cy.get('.li')
+    //gets the button checks whether it has the property next and goes to the next webpage
     cy.get('button')
       .contains('Submit')
+      .should('exist')
+      .should('be.enabled')
       .click()
   })
 })
